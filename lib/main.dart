@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -131,13 +132,15 @@ void localNoti() async {
       android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
       onSelectNotification: (p) => onDidSelectLocalNotification(p));
-  await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
-      .createNotificationChannel(AndroidNotificationChannel(
-          '1', 'Order Noti', 'Uniqu Sound Noti On Background',
-          importance: Importance.high,
-          sound: RawResourceAndroidNotificationSound('thatwasquick')));
+  if (Platform.isAndroid) {
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        .createNotificationChannel(AndroidNotificationChannel(
+            '1', 'Order Noti', 'Uniqu Sound Noti On Background',
+            importance: Importance.high,
+            sound: RawResourceAndroidNotificationSound('thatwasquick')));
+  }
 }
 
 void main() async {
