@@ -151,6 +151,30 @@ class ProductLocationState extends State<ProductLocation> {
                   },
                 ),
               ),
+              Positioned(
+                top: 30,
+                left: 20,
+                child: InkWell(
+                  onTap: () => Navigator.pop(context),
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 10,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Icon(Icons.arrow_back_ios_new),
+                  ),
+                ),
+              ),
               widget.from == "order"
                   ? Container()
                   : Align(
