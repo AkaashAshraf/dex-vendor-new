@@ -532,7 +532,7 @@ class _OrdersPageState extends State<OrdersPage> {
                                 ],
                               ),
                               Container(
-                                height: height * 75.9,
+                                height: height * 72.9,
                                 width: MediaQuery.of(context).size.width,
                                 child: Stack(
                                   children: <Widget>[

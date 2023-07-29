@@ -1351,7 +1351,7 @@ class _AddNewProductState extends State<AddNewProduct> {
                           },
                           child: ContainerResponsive(
                             margin: EdgeInsetsResponsive.only(
-                                right: 30, left: 30, top: 5),
+                                right: 30, left: 30, top: 5, bottom: 50),
                             height: 70,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -152,7 +154,7 @@ class AnimatedBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: kToolbarHeight,
+      height: Platform.isIOS ? 70 : kToolbarHeight,
       decoration: BoxDecoration(color: Colors.white),
       child: Row(
         children: <Widget>[
@@ -220,48 +222,51 @@ class BottomNavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      transitionBuilder: (child, animation) {
-        return SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(0.0, 1.0),
-            end: Offset.zero,
-          ).animate(animation),
-          child: child,
-        );
-      },
-      duration: Duration(milliseconds: 500),
-      reverseDuration: Duration(milliseconds: 200),
-      child: isActive
-          ? Container(
-              color: Colors.white,
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: activeColor ?? Theme.of(context).primaryColor,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 5.0),
+      child: AnimatedSwitcher(
+        transitionBuilder: (child, animation) {
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0.0, 1.0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+        duration: Duration(milliseconds: 500),
+        reverseDuration: Duration(milliseconds: 200),
+        child: isActive
+            ? Container(
+                color: Colors.white,
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: activeColor ?? Theme.of(context).primaryColor,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 5.0),
-                  Container(
-                    width: 5.0,
-                    height: 5.0,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: activeColor ?? Theme.of(context).primaryColor,
+                    const SizedBox(height: 5.0),
+                    Container(
+                      width: 5.0,
+                      height: 5.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: activeColor ?? Theme.of(context).primaryColor,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+              )
+            : Icon(
+                icon,
+                color: inactiveColor ?? Colors.grey,
               ),
-            )
-          : Icon(
-              icon,
-              color: inactiveColor ?? Colors.grey,
-            ),
+      ),
     );
   }
 }

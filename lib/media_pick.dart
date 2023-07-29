@@ -84,7 +84,7 @@ class _MediaPickDialogState extends State<MediaPickDialog> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
-                      TextResponsive('قم باختيار ملفك باستخدام'),
+                      TextResponsive('Pick image'),
                       const SizedBox(
                         height: 8,
                       ),
@@ -94,10 +94,10 @@ class _MediaPickDialogState extends State<MediaPickDialog> {
                             var pickedfile = await ImagePicker().getImage(
                                 source: ImageSource.camera, imageQuality: 50);
                             var result = File(pickedfile.path);
-                            var lostData = await ImagePicker().getLostData();
-                            if (lostData.file != null) {
-                              result = File(lostData.file.path);
-                            }
+                            // var lostData = await ImagePicker().getLostData();
+                            // if (lostData.file != null) {
+                            //   result = File(lostData.file.path);
+                            // }
                             Navigator.pop(context, result);
                           } else {
                             var pickedFile = await ImagePicker()
@@ -118,7 +118,7 @@ class _MediaPickDialogState extends State<MediaPickDialog> {
                           Icons.camera_alt,
                           color: Theme.of(context).primaryColor,
                         ),
-                        trailing: Text('الكاميرا'),
+                        trailing: Text('Camera'),
                       ),
                       ListTile(
                         onTap: () async {
@@ -127,10 +127,10 @@ class _MediaPickDialogState extends State<MediaPickDialog> {
                                 source: ImageSource.gallery, imageQuality: 50);
                             var result = File(pickedfile.path);
                             print(result.path);
-                            var lostData = await ImagePicker().getLostData();
-                            if (lostData.file != null) {
-                              result = File(lostData.file.path);
-                            }
+                            // var lostData = await ImagePicker().getLostData();
+                            // if (lostData.file != null) {
+                            //   result = File(lostData.file.path);
+                            // }
                             Navigator.pop(context, result);
                           } else {
                             var pickedFile = await ImagePicker()
@@ -151,7 +151,7 @@ class _MediaPickDialogState extends State<MediaPickDialog> {
                           Icons.image,
                           color: Theme.of(context).primaryColor,
                         ),
-                        trailing: Text('الوسائط'),
+                        trailing: Text('Gallery'),
                       ),
                       TextButton(
                           onPressed: () {
@@ -163,7 +163,7 @@ class _MediaPickDialogState extends State<MediaPickDialog> {
                                   borderRadius: BorderRadius.circular(5)),
                               padding: EdgeInsets.symmetric(
                                   vertical: 5, horizontal: 10),
-                              child: Text('الغاء',
+                              child: Text('Cancel',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 15))))
                     ],

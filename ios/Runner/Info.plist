@@ -8,6 +8,12 @@
 	</array>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+<string>Dex need library access to allow you to upload your profile picture</string>
+ <key>NSMicrophoneUsageDescription</key>
+<string>Need microphone access for uploading audio</string>
+<key>NSCameraUsageDescription</key>
+<string>Dex need camera access to allow you to upload your profile picture</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -48,8 +54,7 @@
 	<string>Almarid contacts use.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Almarid purpose for using calendar</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Almarid need access to your camera to be able to upload a photo the profile</string>
+ 
 	<key>NSContactsUsageDescription</key>
 	<string>Almarid contacts use.</string>
 	<key>NSLocationAlwaysUsageDescription</key>

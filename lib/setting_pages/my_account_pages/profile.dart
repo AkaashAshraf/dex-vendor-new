@@ -183,6 +183,8 @@ class _ProfileState extends State<Profile> {
             backgroundColor: Colors.green,
             textColor: Colors.white,
             fontSize: 16.0);
+        Navigator.of(context).popUntil(ModalRoute.withName('home'));
+        Navigator.pushReplacementNamed(context, 'home');
       } else {
         Fluttertoast.showToast(
             msg: response.data["Data"],
